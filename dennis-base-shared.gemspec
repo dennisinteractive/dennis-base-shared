@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   # Gem Details
   s.name = "dennis-base-shared"
   s.authors = ["Attila Beregszaszi"]
-  s.summary = %q{component for Dennis Distro Compass based themes}
-  s.description = %q{component for Dennis Distro Compass based themes}
-  s.email = "attila@frontseed.com"
+  s.summary = %q{Shared components for Compass-based themes in Dennis Distro}
+  s.description = %q{Shared components for Compass-based themes in Dennis Distro.}
+  s.license = 'MIT'
 
   # Gem Files
   s.files = %w(README.md)
