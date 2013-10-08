@@ -1,0 +1,194 @@
+/**
+ * @file _common.scss
+ *   Share partial of common variables and mixins.
+ *
+ * This file includes configuration variables to various SASS components.
+ * It also contains any variables, mixins and helper styles which should be
+ * available for use in partials.
+ *
+ * This partial is shared and can be imported from site themes using:
+ *   @import "common";
+ * This applied only if add_import_path is configured in the site theme Compass
+ * project file.
+ *
+ * @see master.scss
+ */
+
+// Compass uses these variables for a couple edge IE cases. We include them for
+// completeness sake and to no recieve warnings. See the documentation at
+// http://compass-style.org/reference/compass/support/
+$legacy-support-for-ie6: false !default;
+$legacy-support-for-ie7: false !default;
+$legacy-support-for-ie8: true !default;
+
+
+// Zen Grids Settings
+// -----------------------------------------------------------------------------
+// In zen-grids the variable $zen-column-count is 1 by default, this is only a
+// workaround to use 24 as default value.
+@if $zen-column-count > 1 { $zen-column-count: 24 !default; } @else { $zen-column-count: 24; }
+$zen-gutter-width: 20px !default;
+$zen-gutter-half: $zen-gutter-width / 2 !default;
+
+// You can generate more efficient CSS if you manually apply the
+// zen-grid-item-base mixin to all grid items from within a single ruleset.
+$zen-auto-include-item-base: false;
+
+// Responsive layout settings
+$site-width-narrow: 740px !default;
+$site-width-desktop: 960px !default;
+$site-max-width-desktop: 960px !default;
+
+//Sub menu container width
+$main-menu-submenu-width: 250px !default;
+
+$base-font-size: 16px !default;
+
+// Breakpoints are calculated by adding site width and grid gutter width and
+// then converted to em based on $base-font-size.
+// Mobile viewport is the one below the thinnest viewport defined and those
+// styles are applied first as per the Mobile / Content first approach.
+$breakpoint-narrow: ($site-width-narrow + $zen-gutter-width) / $base-font-size * 1em !default;
+$breakpoint-desktop: ($site-width-desktop + $zen-gutter-width) / $base-font-size * 1em !default;
+
+// Height of the main navigation element holding the primary and secondary menu
+// This is used for the padding-top of its container.
+$main-nav-height: 7em !default; // 6em + 1em of whitespace.
+
+/**
+ * Variables
+ *
+ * List all variables/colours to be available across the theme.
+ *
+ * Example:
+ * $color-yourcolorname: #4D926F;
+ */
+
+// Colours - prefix your variable with 'color-' to keep them tidy.
+$color-black: #000000 !default;
+$color-white: #FFFFFF !default;
+$color-grey:  #888888 !default;
+$color-dark:  #333333 !default;
+$color-light: #f5f5f5 !default;
+$color-light-grey: #eeeeee !default;
+
+$color-link: #3355aa !default;
+$color-link-hover: #000000 !default;
+
+$color-core-footer: #222222 !default;
+$color-dennis-red: #f4242c !default;
+$color-error: #aa1144 !default;
+$color-marker: #aa1144 !default;
+$color-page-border: #cccccc !default;
+
+$color-table-caption-background: #eeeeee !default;
+$color-table-tr-zebra: #e5e5e5 !default;
+$color-table-tr-dragged: #fffff0 !default;
+$color-table-tr-dragged-previous: #ffffdd !default;
+$color-table-th-background: #cccccc !default;
+$color-table-td-active: #dddddd !default;
+
+/**
+ * Custom Mixins
+ *
+ * General list of helpful mixins. Don't forget you already have a bunch of
+ * mixins available by default from the Compass CSS3 Utilities
+ *
+ * @see http://compass-style.org/reference/compass/css3
+ *
+ * Example:
+ * @mixin rounded-corners ($radius: 5px) {
+ *   border-radius: $radius;
+ *   -webkit-border-radius: $radius;
+ *   -moz-border-radius: $radius;
+ * }
+ */
+
+// Micro clearfix hack
+// See http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  @include has-layout;
+}
+
+// element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    clip: rect(1px 1px 1px 1px); // IE6 and IE7 use the wrong syntax.
+  }
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+@mixin element-focusable {
+  @include element-invisible;
+
+  &:active,
+  &:focus {
+    @include element-invisible-off;
+  }
+}
+
+/**
+ * Legacy and helper Classes
+ */
+.clear {
+  clear: both;
+}
+
+// Clear floats after an element. This is kept for backwards compatibility
+.clearfix:after,
+.clearfix .inner:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  overflow: auto;
+  visibility: hidden;
+}
+
+// Default block gutter styles.
+@mixin block-gutter-default {
+  padding-left: $zen-gutter-half;
+  padding-right: $zen-gutter-half;
+  @include box-sizing(border-box);
+}
+
+@mixin block-gutter-node-inline {
+  padding-left: 0;
+  padding-right: $zen-gutter-width; // LTR
+}
+
+@mixin block-no-gutter {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Default block margins
+@mixin block-margin-default {
+  margin-bottom: 1.5em;
+}
+@mixin block-margin-half {
+  margin-bottom: 0.75em;
+}
+@mixin block-no-margin {
+  margin-bottom: 0;
+}

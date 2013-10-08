@@ -1,4 +1,4 @@
 dennis-base-shared
 ==================
 
-Gem component for Dennis Distro SASS based themes
+Gem component for Dennis Distro Compass based themes
