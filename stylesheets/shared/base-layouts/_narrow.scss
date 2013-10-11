@@ -153,8 +153,8 @@ body {
 #header-group {
   margin-bottom: 10px;
   margin-top: 10px;
-  .btn-site-menus,
-  .btn-site-search { //menu and search togle buttons are not necessary here
+  // Hide navigation toggle buttons on wider viewports.
+  .nav-button {
     @include element-invisible;
   }
 }
