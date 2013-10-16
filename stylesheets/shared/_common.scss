@@ -177,6 +177,11 @@ $color-table-td-active: #dddddd !default;
   padding-right: $zen-gutter-width; // LTR
 }
 
+@mixin block-gutter-node-inline-ltr {
+  padding-right: 0;
+  padding-left: $zen-gutter-width; // RTL
+}
+
 @mixin block-no-gutter {
   padding-left: 0;
   padding-right: 0;

@@ -147,6 +147,10 @@ body {
   }
 }
 
+.node-inline > .block {
+  @include block-gutter-node-inline;
+}
+
 
 //  Header region
 // -----------------------------------------------------------------------------
