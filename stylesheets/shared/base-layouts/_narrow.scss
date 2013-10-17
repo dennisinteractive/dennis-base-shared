@@ -23,7 +23,11 @@ $grid-position-sidebar-second:   null;
 
 body {
 
-  &.two-sidebars {
+  // Grid setup with narrow_stacked turned OFF
+  // ---------------------------------------------------------------------------
+  // These calculations assume that both sidebars, if present, are placed next
+  // or around the main content area.
+  &.narrow-grid.two-sidebars {
     // Get grid sidebar positions
     @if $grid-sidebar-order == 012 {
       $grid-position-content: 1;
@@ -62,12 +66,13 @@ body {
     #sidebar-first {
       @include zen-grid-item($grid-size-sidebar-first, $grid-position-sidebar-first);
     }
+    #sidebar-second-alt,
     #sidebar-second {
       @include zen-grid-item($grid-size-sidebar-second, $grid-position-sidebar-second);
     }
   }
 
-  &.one-sidebar.sidebar-second {
+  &.narrow-grid.one-sidebar.sidebar-second {
     // Get grid sidebar positions
     @if $grid-sidebar-order == 012 or $grid-sidebar-order == 021 or $grid-sidebar-order == 102 {
       $grid-position-content: 1;
@@ -81,12 +86,13 @@ body {
     #content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-second, $grid-position-content);
     }
+    #sidebar-second-alt,
     #sidebar-second {
       @include zen-grid-item($grid-size-sidebar-second, $grid-position-sidebar-second);
     }
   }
 
-  &.one-sidebar.sidebar-first {
+  &.narrow-grid.one-sidebar.sidebar-first {
     // Get grid sidebar positions
     @if $grid-sidebar-order == 012 or $grid-sidebar-order == 021 or $grid-sidebar-order == 201 {
       $grid-position-content: 1;
@@ -100,11 +106,73 @@ body {
     #content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-position-content);
     }
+    #sidebar-second-alt,
     #sidebar-first {
       @include zen-grid-item($grid-size-sidebar-first, $grid-position-sidebar-first);
     }
   }
 
+
+  // Grid setup with narrow_stacked turned ON
+  // ---------------------------------------------------------------------------
+  // This calculation excludes the sidebar second as it will be wrapped under
+  // the content area.
+  //
+  // Both sidebars or first sidebar only.
+  &.narrow-stacked.two-sidebars,
+  &.narrow-stacked.one-sidebar.sidebar-first {
+    // Get sidebar grid positions
+    @if $grid-sidebar-order == 012 or $grid-sidebar-order == 021 or $grid-sidebar-order == 201 {
+      $grid-position-content: 1;
+      $grid-position-sidebar-first: $zen-column-count - $grid-size-sidebar-first + 1;
+    }
+    @else if $grid-sidebar-order == 102 or $grid-sidebar-order == 120 or $grid-sidebar-order == 210 {
+      $grid-position-content: $grid-size-sidebar-first + 1;
+      $grid-position-sidebar-first: 1;
+    }
+  }
+
+  &.narrow-stacked.two-sidebars {
+    #content {
+      @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-position-content);
+    }
+    #sidebar-first {
+      @include zen-grid-item($grid-size-sidebar-first, $grid-position-sidebar-first);
+    }
+    #sidebar-second-alt,
+    #sidebar-second {
+      @include zen-clear;
+      @include zen-grid-item($zen-column-count, 1);
+    }
+  }
+
+  // Stacked with first sidebar only
+  &.narrow-stacked.one-sidebar.sidebar-first {
+    #content {
+      @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-position-content);
+    }
+    #sidebar-first {
+      @include zen-grid-item($grid-size-sidebar-first, $grid-position-sidebar-first);
+    }
+  }
+
+  // Stacked with second sidebar only
+  // Both content and sidebar will get full width as sidebar blocks will render
+  // via masonry.js
+  &.narrow-stacked.one-sidebar.sidebar-second {
+    #content {
+      @include zen-grid-item($zen-column-count, 1);
+    }
+    #sidebar-second-alt,
+    #sidebar-second {
+      @include zen-clear;
+      @include zen-grid-item($zen-column-count, 1);
+    }
+  }
+
+
+  // No sidebars are defined, content can go to full page width, regardless of
+  // the narrow_stacked configuration setting.
   &.no-sidebars {
     #content {
       @include zen-grid-item($zen-column-count, 1);
@@ -123,11 +191,23 @@ body {
 }
 
 
-// Site navigation positioning
+// Main element
 // -----------------------------------------------------------------------------
-/* Move all the children of #main down to make room.*/
+#main {
+  max-width: $site-max-width-narrow;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-
+#main {background-color: lime;}
+#sidebar-second {background-color: red;}
+#sidebar-second .block {background-color: yellow;}
+body.narrow-stacked #sidebar-second .block {
+  // max-width: 320px;
+  // min-width: 160px;
+  width: 50%;
+  // width: auto !important;
+}
 
 // Region and Block container setup
 // -----------------------------------------------------------------------------
