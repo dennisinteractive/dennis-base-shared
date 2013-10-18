@@ -23,7 +23,8 @@ $grid-position-sidebar-second:   null;
 
 body {
 
-  &.two-sidebars {
+  &.narrow-grid.two-sidebars,
+  &.narrow-stacked.two-sidebars {
     // Get grid sidebar positions
     @if $grid-sidebar-order == 012 {
       $grid-position-content: 1;
@@ -69,7 +70,8 @@ body {
 
   }
 
-  &.one-sidebar.sidebar-second {
+  &.narrow-grid.one-sidebar.sidebar-second,
+  &.narrow-stacked.one-sidebar.sidebar-second {
     // Get grid sidebar positions
     @if $grid-sidebar-order == 012 or $grid-sidebar-order == 021 or $grid-sidebar-order == 102 {
       $grid-position-content: 1;
@@ -115,14 +117,10 @@ body {
   }
 }
 
-#main,
-#sidebar-second,
-#sidebar-second .block {background-color: transparent;}
 // Setting back the block width from narrow.
 body.narrow-stacked #sidebar-second .block {
   width: 100%;
 }
-
 
 
 // Page element

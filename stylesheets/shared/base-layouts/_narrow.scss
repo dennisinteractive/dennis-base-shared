@@ -16,10 +16,15 @@
 $grid-size-sidebar-first: 5 !default;
 $grid-size-sidebar-second: 8 !default;
 
+// If narrow layout is stacked then masonry will flow blocks in sidebar second
+// to this amount of columns.
+$narrow-stacked-columns: 2 !default;
+
 $grid-sidebar-order:             102 !default;
 $grid-position-content:          null;
 $grid-position-sidebar-first:    null;
 $grid-position-sidebar-second:   null;
+
 
 body {
 
@@ -199,14 +204,8 @@ body {
   margin-right: auto;
 }
 
-#main {background-color: lime;}
-#sidebar-second {background-color: red;}
-#sidebar-second .block {background-color: yellow;}
 body.narrow-stacked #sidebar-second .block {
-  // max-width: 320px;
-  // min-width: 160px;
-  width: 50%;
-  // width: auto !important;
+  width: 100% / $narrow-stacked-columns;
 }
 
 // Region and Block container setup
