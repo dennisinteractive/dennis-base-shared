@@ -204,8 +204,13 @@ body {
   margin-right: auto;
 }
 
-body.narrow-stacked #sidebar-second .block {
-  width: 100% / $narrow-stacked-columns;
+body.narrow-stacked {
+  #sidebar-second,
+  #sidebar-second-alt {
+    .block {
+      width: 100% / $narrow-stacked-columns;
+    }
+  }
 }
 
 // Region and Block container setup

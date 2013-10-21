@@ -63,6 +63,7 @@ body {
     #sidebar-first {
       @include zen-grid-item($grid-size-sidebar-first, $grid-position-sidebar-first);
     }
+    #sidebar-second-alt,
     #sidebar-second {
       clear: none;
       @include zen-grid-item($grid-size-sidebar-second, $grid-position-sidebar-second);
@@ -85,6 +86,7 @@ body {
     #content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-second, $grid-position-content);
     }
+    #sidebar-second-alt,
     #sidebar-second {
       clear: none;
       @include zen-grid-item($grid-size-sidebar-second, $grid-position-sidebar-second);
@@ -118,8 +120,13 @@ body {
 }
 
 // Setting back the block width from narrow.
-body.narrow-stacked #sidebar-second .block {
-  width: 100%;
+body.narrow-stacked {
+  #sidebar-second,
+  #sidebar-second-alt {
+    .block {
+      width: 100%;
+    }
+  }
 }
 
 
