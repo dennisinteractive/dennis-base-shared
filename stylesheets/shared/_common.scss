@@ -72,6 +72,7 @@ $color-grey:  #888888 !default;
 $color-dark:  #333333 !default;
 $color-light: #f5f5f5 !default;
 $color-light-grey: #eeeeee !default;
+$color-light-grey-alt: #dddddd !default;
 
 $color-link: #3355aa !default;
 $color-link-hover: #000000 !default;
@@ -118,7 +119,7 @@ $color-table-td-active: #dddddd !default;
 
 // element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
 @mixin element-invisible {
-  position: absolute !important;
+  position: absolute;
   height: 1px;
   width: 1px;
   overflow: hidden;
@@ -130,11 +131,11 @@ $color-table-td-active: #dddddd !default;
 
 // Turns off the element-invisible effect.
 @mixin element-invisible-off {
-  position: static !important;
+  position: inherit;
   clip: auto;
   height: auto;
   width: auto;
-  overflow: auto;
+  overflow: inherit;
 }
 
 @mixin element-focusable {

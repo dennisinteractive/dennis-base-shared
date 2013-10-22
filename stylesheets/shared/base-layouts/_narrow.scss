@@ -251,13 +251,14 @@ body.narrow-stacked {
 // Menu Group
 // ============================================================================= [SPLIT]
 // Turn on visibility of menu blocks.
-#site-menus {
+.site-menus {
 
   // Blocks in the main navigation area should be invisible by default and can be
   // toggled by the buttons.
   .block {
     @include element-invisible-off();
     overflow: visible;
+    position: relative;
   }
   .block-menu,
   .block-superfish {
