@@ -311,7 +311,7 @@ li {
   &.last,
   &:last-child {
     & > a {
-      border: none !important;
+      border: none;
     }
   }
 }
