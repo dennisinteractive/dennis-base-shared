@@ -32,7 +32,7 @@ $zen-gutter-half: $zen-gutter-width / 2 !default;
 
 // You can generate more efficient CSS if you manually apply the
 // zen-grid-item-base mixin to all grid items from within a single ruleset.
-$zen-auto-include-item-base: false;
+$zen-auto-include-item-base: false !default;
 
 // Responsive layout settings
 $site-max-width-narrow: 840px !default;

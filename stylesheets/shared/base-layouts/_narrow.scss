@@ -65,7 +65,7 @@ body {
       $grid-position-sidebar-second: 1;
     }
 
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-first - $grid-size-sidebar-second, $grid-position-content);
     }
     #sidebar-first {
@@ -88,7 +88,7 @@ body {
       $grid-position-sidebar-second: 1;
     }
 
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-second, $grid-position-content);
     }
     #sidebar-second-alt,
@@ -108,7 +108,7 @@ body {
       $grid-position-sidebar-first: 1;
     }
 
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-position-content);
     }
     #sidebar-second-alt,
@@ -138,7 +138,7 @@ body {
   }
 
   &.narrow-stacked.two-sidebars {
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-position-content);
     }
     #sidebar-first {
@@ -153,7 +153,7 @@ body {
 
   // Stacked with first sidebar only
   &.narrow-stacked.one-sidebar.sidebar-first {
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-position-content);
     }
     #sidebar-first {
@@ -165,7 +165,7 @@ body {
   // Both content and sidebar will get full width as sidebar blocks will render
   // via masonry.js
   &.narrow-stacked.one-sidebar.sidebar-second {
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count, 1);
     }
     #sidebar-second-alt,
@@ -179,7 +179,7 @@ body {
   // No sidebars are defined, content can go to full page width, regardless of
   // the narrow_stacked configuration setting.
   &.no-sidebars {
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count, 1);
     }
   }

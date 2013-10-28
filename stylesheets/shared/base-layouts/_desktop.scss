@@ -57,7 +57,7 @@ body {
       $grid-position-sidebar-second: 1;
     }
 
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-first - $grid-size-sidebar-second, $grid-position-content);
     }
     #sidebar-first {
@@ -83,7 +83,7 @@ body {
       $grid-position-sidebar-second: 1;
     }
 
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-second, $grid-position-content);
     }
     #sidebar-second-alt,
@@ -104,7 +104,7 @@ body {
       $grid-position-sidebar-first: 1;
     }
 
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-position-content);
     }
     #sidebar-first {
@@ -113,7 +113,7 @@ body {
   }
 
   &.no-sidebars {
-    #content {
+    #group-content {
       @include zen-grid-item($zen-column-count, 1);
     }
   }
