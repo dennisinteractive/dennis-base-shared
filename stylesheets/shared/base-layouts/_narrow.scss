@@ -20,6 +20,9 @@ $grid-size-sidebar-second: 8 !default;
 // to this amount of columns.
 $narrow-stacked-columns: 2 !default;
 
+// If this is set to true then masonry will use fixed size blocks for the region.
+$narrow-stacked-fixed-blocks: true !default;
+
 $grid-sidebar-order:             102 !default;
 $grid-position-content:          null;
 $grid-position-sidebar-first:    null;
@@ -171,7 +174,9 @@ body {
     #sidebar-second-alt,
     #sidebar-second {
       @include zen-clear;
-      @include zen-grid-item($zen-column-count, 1);
+      @if ($narrow-stacked-fixed-blocks == false) {
+        @include zen-grid-item($zen-column-count, 1);
+      }
     }
   }
 
@@ -204,11 +209,19 @@ body {
   margin-right: auto;
 }
 
+// Second sidebar blocks with masonry enabled.
 body.narrow-stacked {
   #sidebar-second,
   #sidebar-second-alt {
+    margin-left: auto;
+    margin-right: auto;
     .block {
-      width: 100% / $narrow-stacked-columns;
+      @if ($narrow-stacked-fixed-blocks == false) {
+        width: 100% / $narrow-stacked-columns;
+      }
+      @else {
+        width: $grid-size-sidebar-second * ($site-width-desktop / $zen-column-count);
+      }
     }
   }
 }
