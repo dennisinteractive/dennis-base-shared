@@ -70,6 +70,9 @@ body {
     }
 
   }
+  &.sidebar-alt .wrapper-alt {
+    @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-size-sidebar-first + 1);
+  }
 
   &.narrow-grid.one-sidebar.sidebar-second,
   &.narrow-stacked.one-sidebar.sidebar-second {
@@ -93,6 +96,34 @@ body {
     }
   }
 
+  &.sidebar-alt.narrow-grid.one-sidebar.sidebar-second,
+  &.sidebar-alt.narrow-stacked.one-sidebar.sidebar-second {
+    // Get grid sidebar positions
+    $zen-column-count-new: $zen-column-count;
+    $zen-column-count: $zen-column-count-new - $grid-size-sidebar-first;
+    @if $grid-sidebar-order == 012 or $grid-sidebar-order == 021 or $grid-sidebar-order == 102 {
+      $grid-position-content: 1;
+      $grid-position-sidebar-second: $zen-column-count - $grid-size-sidebar-second + 1;
+    }
+    @else if $grid-sidebar-order == 120 or $grid-sidebar-order == 201 or $grid-sidebar-order == 210 {
+      $grid-position-content: $grid-size-sidebar-second + 1;
+      $grid-position-sidebar-second: 1;
+    }
+
+    #group-content {
+      @include zen-grid-item($zen-column-count - $grid-size-sidebar-second, $grid-position-content);
+    }
+    #sidebar-second-alt,
+    #sidebar-second {
+      clear: none;
+      @include zen-grid-item($grid-size-sidebar-second, $grid-position-sidebar-second);
+    }
+     $zen-column-count: $zen-column-count-new;
+
+
+
+  }
+
   &.one-sidebar.sidebar-first {
     // Get grid sidebar positions
     @if $grid-sidebar-order == 012 or $grid-sidebar-order == 021 or $grid-sidebar-order == 201 {
@@ -111,6 +142,15 @@ body {
       @include zen-grid-item($grid-size-sidebar-first, $grid-position-sidebar-first);
     }
   }
+
+
+
+
+ 
+  // #sidebar-first-alt .dfp-tag-wrapper .dfp-tag-wrapper {
+  //   padding-left: 0;
+  //   padding-right: 0;
+  // }
 
   &.no-sidebars {
     #group-content {

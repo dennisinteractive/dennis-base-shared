@@ -79,7 +79,22 @@ body {
       @include zen-grid-item($grid-size-sidebar-second, $grid-position-sidebar-second);
     }
   }
+  &.sidebar-alt .sidebar-first-alt {
+    @include zen-grid-item($grid-size-sidebar-first, 1);
+  }
 
+  // Setting for sidebar-first-alt
+  &.sidebar-alt #page-title,
+  &.sidebar-alt #content-tabs,
+  &.sidebar-alt #content-messages,
+  &.sidebar-alt #help,
+  &.sidebar-alt .action-links,
+  &.sidebar-alt #preface-bottom {
+    clear: both;
+  }
+  &.sidebar-alt .wrapper-alt {
+    @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-size-sidebar-first + 1);
+  }
   &.narrow-grid.one-sidebar.sidebar-second {
     // Get grid sidebar positions
     @if $grid-sidebar-order == 012 or $grid-sidebar-order == 021 or $grid-sidebar-order == 102 {
@@ -128,7 +143,8 @@ body {
   //
   // Both sidebars or first sidebar only.
   &.narrow-stacked.two-sidebars,
-  &.narrow-stacked.one-sidebar.sidebar-first {
+  &.narrow-stacked.one-sidebar.sidebar-first,
+  &.narrow-stacked.one-sidebar.sidebar-first-alt {
     // Get sidebar grid positions
     @if $grid-sidebar-order == 012 or $grid-sidebar-order == 021 or $grid-sidebar-order == 201 {
       $grid-position-content: 1;
@@ -155,11 +171,13 @@ body {
   }
 
   // Stacked with first sidebar only
-  &.narrow-stacked.one-sidebar.sidebar-first {
+  &.narrow-stacked.one-sidebar.sidebar-first,
+  &.narrow-stacked.one-sidebar.sidebar-first-alt {
     #group-content {
       @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-position-content);
     }
-    #sidebar-first {
+    #sidebar-first,
+    #sidebar-first-alt {
       @include zen-grid-item($grid-size-sidebar-first, $grid-position-sidebar-first);
     }
   }
