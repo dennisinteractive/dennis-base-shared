@@ -79,22 +79,6 @@ body {
       @include zen-grid-item($grid-size-sidebar-second, $grid-position-sidebar-second);
     }
   }
-  &.sidebar-alt .sidebar-first-alt {
-    @include zen-grid-item($grid-size-sidebar-first, 1);
-  }
-
-  // Setting for sidebar-first-alt
-  &.sidebar-alt #page-title,
-  &.sidebar-alt #content-tabs,
-  &.sidebar-alt #content-messages,
-  &.sidebar-alt #help,
-  &.sidebar-alt .action-links,
-  &.sidebar-alt #preface-bottom {
-    clear: both;
-  }
-  &.sidebar-alt .wrapper-alt {
-    @include zen-grid-item($zen-column-count - $grid-size-sidebar-first, $grid-size-sidebar-first + 1);
-  }
   &.narrow-grid.one-sidebar.sidebar-second {
     // Get grid sidebar positions
     @if $grid-sidebar-order == 012 or $grid-sidebar-order == 021 or $grid-sidebar-order == 102 {
