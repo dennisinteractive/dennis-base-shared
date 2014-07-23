@@ -334,7 +334,8 @@ li {
 
 // DFP ad blocks
 // ----------------------------------------------------------------------------- [SPLIT]
-.block-dfp {
+.block-dfp,
+.block-onscroll {
   // Inline ad blocks have their margins/paddings set in their inner
   // containers to fix whitespace if no ad is served into the slot.
   @include block-no-gutter;
