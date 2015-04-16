@@ -200,14 +200,6 @@ body {
 }
 
 
-// Main element
-// -----------------------------------------------------------------------------
-#main {
-  max-width: $site-max-width-narrow;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 // Second sidebar blocks with masonry enabled.
 body.narrow-stacked {
   #sidebar-second,
