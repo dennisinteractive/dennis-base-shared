@@ -39,6 +39,7 @@ $site-max-width-narrow: 840px !default;
 $site-width-narrow: 740px !default;
 $site-width-desktop: 960px !default;
 $site-max-width-desktop: 960px !default;
+$site-width-wide: 1200px !default;
 
 //Sub menu container width
 $main-menu-submenu-width: 250px !default;
@@ -49,8 +50,9 @@ $base-font-size: 16px !default;
 // then converted to em based on $base-font-size.
 // Mobile viewport is the one below the thinnest viewport defined and those
 // styles are applied first as per the Mobile / Content first approach.
-$breakpoint-narrow: ($site-width-narrow + $zen-gutter-width) / $base-font-size * 1em !default;
-$breakpoint-desktop: ($site-width-desktop + $zen-gutter-width) / $base-font-size * 1em !default;
+$breakpoint-narrow: ($site-width-narrow + $zen-gutter-width) / 16px * 1em !default;
+$breakpoint-desktop: ($site-width-desktop + $zen-gutter-width) / 16px * 1em !default;
+$breakpoint-wide: ($site-width-wide + $zen-gutter-width) / 16px * 1em !default;
 
 // Height of the main navigation element holding the primary and secondary menu
 // This is used for the padding-top of its container.
