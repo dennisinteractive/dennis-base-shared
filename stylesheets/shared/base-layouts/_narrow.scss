@@ -329,9 +329,6 @@ li {
   // containers to fix whitespace if no ad is served into the slot.
   @include block-no-gutter;
 }
-.dfp-tag-wrapper .dfp-tag-wrapper {
-  @include block-gutter-default;
-}
 
 
 //  Postscript & Footer regions
