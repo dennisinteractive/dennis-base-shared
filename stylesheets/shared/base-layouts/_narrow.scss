@@ -24,9 +24,9 @@ $narrow-stacked-columns: 2 !default;
 $narrow-stacked-fixed-blocks: true !default;
 
 $grid-sidebar-order:             102 !default;
-$grid-position-content:          null;
-$grid-position-sidebar-first:    null;
-$grid-position-sidebar-second:   null;
+$grid-position-content:          0;
+$grid-position-sidebar-first:    0;
+$grid-position-sidebar-second:   0;
 
 
 body {
