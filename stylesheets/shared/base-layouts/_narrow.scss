@@ -11,6 +11,9 @@
  * @see _responsive.scss
  */
 
+
+
+body {
 // Grid setup
 // =============================================================================
 $grid-size-sidebar-first: 5 !default;
@@ -27,9 +30,6 @@ $grid-sidebar-order:             102 !default;
 $grid-position-content:          0;
 $grid-position-sidebar-first:    0;
 $grid-position-sidebar-second:   0;
-
-
-body {
 
   // Grid setup with narrow_stacked turned OFF
   // ---------------------------------------------------------------------------
